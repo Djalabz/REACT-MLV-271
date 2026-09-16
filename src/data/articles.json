@@ -1,0 +1,58 @@
+[
+    {
+      "id": 1,
+      "titre": "Vulcan, le robot d'Amazon doté du sens du toucher",
+      "contenu": "Le 7 mai 2025, Amazon a dévoilé Vulcan, son premier robot d'entrepôt doté d'un véritable sens du toucher, une avancée majeure dans la robotique industrielle permettant de manipuler des objets avec une finesse inédite.",
+      "date": "2025-05-08",
+      "auteur": "Journal du Robot"
+    },
+    {
+      "id": 2,
+      "titre": "Le G1 d'Unitree Robotics : l'humanoïde chinois qui pratique les arts martiaux",
+      "contenu": "Unitree Robotics a présenté son robot humanoïde G1, capable d'exécuter des mouvements d'arts martiaux, illustrant l'accélération de la Chine dans le secteur des robots humanoïdes dopés à l'intelligence artificielle.",
+      "date": "2025-05-08",
+      "auteur": "Journal du Robot"
+    },
+    {
+      "id": 3,
+      "titre": "Argus, le robot sphérique à 20 jambes qui se déplace dans toutes les directions",
+      "contenu": "Des ingénieurs américains ont créé un prototype de robot en forme d'oursin, qui avance en s'appuyant sur ses jambes coulissantes, potentiellement destiné à l'exploration de terrains accidentés, terrestres ou extraterrestres.",
+      "date": "2026-05-08",
+      "auteur": "Le Monde"
+    },
+    {
+      "id": 4,
+      "titre": "En Chine, l'industrie du robot mise sur un marché à 5 000 milliards de dollars",
+      "contenu": "Lors d'une conférence planétaire et de jeux robotiques au Stade national de Pékin (8 au 17 août), la Chine a affirmé ses avancées dans les bras industriels automatisés et les humanoïdes intelligents, visant un marché colossal.",
+      "date": "2026-08-17",
+      "auteur": "Le Monde"
+    },
+    {
+      "id": 5,
+      "titre": "Des robots humanoïdes ont couru un semi-marathon en Chine",
+      "contenu": "Une vingtaine de robots humanoïdes ont disputé, pour la première fois au monde, un semi-marathon aux côtés de coureurs humains, une démonstration des avancées technologiques de Pékin.",
+      "date": "2026-08-15",
+      "auteur": "Le Monde"
+    },
+    {
+      "id": 6,
+      "titre": "Un minirobot avec de vrais muscles fait ses premiers pas",
+      "contenu": "Une équipe de l'université de Tokyo a conçu un minirobot bipède de quelques millimètres, dont le squelette artificiel et les muscles biologiques lui permettent d'avancer et de pivoter dans l'eau sur un très faible rayon.",
+      "date": "2026-05-08",
+      "auteur": "Le Monde"
+    },
+    {
+      "id": 7,
+      "titre": "Robots : +34 % dans le nettoyage, +91 % dans le médical",
+      "contenu": "Près de 200 000 robots de service professionnels ont été vendus dans le monde en 2025, avec une progression marquée dans le secteur médical et le nettoyage.",
+      "date": "2026-09-02",
+      "auteur": "Robot Magazine"
+    },
+    {
+      "id": 8,
+      "titre": "Quand un robot humanoïde coûtera-t-il moins cher qu'un salarié ?",
+      "contenu": "Analyse des coûts de production des robots humanoïdes et des perspectives économiques qui pourraient rendre leur utilisation plus rentable que le travail humain dans certains secteurs.",
+      "date": "2026-09-02",
+      "auteur": "Robot Magazine"
+    }
+  ]   
