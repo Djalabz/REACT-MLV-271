@@ -1,10 +1,11 @@
 // Import de composants 
 import Counter from "./Counter"
-import List from './List';
+import List from './List'
+import Home from './Home'
 
-// React router imports 
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
+// React router imports (elements du menu de navigation)
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 // Composant fonctionnel 
 function App() {
