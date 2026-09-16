@@ -1,16 +1,30 @@
+// Import de composants 
 import Counter from "./Counter"
+import List from './List';
+
+// React router imports 
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
 
 // Composant fonctionnel 
 function App() {
-  // 1-Données (states, variables)
-  let x = "juju"
-
-  // 2-Opérations (fonctions)
-
-  // 3-Vue (HTML qui ressemble à du JS et qui est l'affichage)
   return (
     <>
-      <Counter name={x}/>
+      <BrowserRouter>
+        {/* Navigation */}
+        <nav>
+          <Link to="/">Home</Link> |{" "}
+          <Link to="/counter">Counter</Link> |{" "}
+          <Link to="/list">List</Link>
+        </nav>
+
+        {/* Routes */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/counter" element={<Counter />} />
+          <Route path="/list" element={<List />} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
