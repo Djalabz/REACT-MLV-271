@@ -3,6 +3,7 @@ import Counter from "./Counter"
 import List from './List'
 import Home from './Home'
 import Random from './Random'
+import Form from './Form'
 
 
 // React router imports (elements du menu de navigation)
@@ -18,6 +19,7 @@ function App() {
           <Link to="/">Home</Link> |{" "}
           <Link to="/counter">Counter</Link> |{" "}
           <Link to="/random">Random</Link> |{" "}
+          <Link to="/form">Form</Link> |{" "}
           <Link to="/list">List</Link>
         </nav>
 
@@ -27,6 +29,7 @@ function App() {
           <Route path="/counter" element={<Counter />} />
           <Route path="/list" element={<List />} />
           <Route path="/random" element={<Random />} />
+          <Route path="/form" element={<Form />} />
         </Routes>
       </BrowserRouter>
     </>

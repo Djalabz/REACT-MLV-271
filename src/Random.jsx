@@ -6,7 +6,7 @@ function Random() {
     const [remainingStudents, setRemainingStudents ] = useState(students)
 
     function pickRandomStudent() {
-        // On génère un index aléatoire afin de picj un élève au hasard
+        // On génère un index aléatoire afin de pick un élève au hasard
         let randomIndex = Math.floor(Math.random() * remainingStudents.length)
 
         // On applique cet index sur la version "filtrée" du tableau d'élèves
@@ -36,12 +36,10 @@ function Random() {
 
             Vous pourrez utiliser (bonus) : setTimeout, setInterval */}
 
-            { (remainingStudents.length) 
+            { remainingStudents.length ? <button onClick={() => pickRandomStudent()}>Pick Student</button>  : <button onClick={() => handleReset()}>Reset</button> }
             
-            ? <button onClick={() => pickRandomStudent()}>Pick Student</button> 
-        
-            : <button onClick={() => handleReset()}>Reset</button> }
-            
+             ? ce qui se passe si ok : ce qui se passe sinon
+
             <h2>{currentStudent}</h2>
         </>
     )
