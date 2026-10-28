@@ -14,8 +14,25 @@ import "./Shop.css"
 
 function Shop() {
     const [products, setProducts] = useState([])
+    const [cart, setCart] = useState(() => {
+        try {
+            return JSON.parse(window.localStorage.getItem("cart"))
+        } catch {
+            return []
+        }
+    }) 
+
+
+    // TO DO :
 
     // Créer un state pour le panier (cart) qui pourra etre un tableau et initialisé comme tableau vide 
+    
+    // Autre useEffect qui viendra écouter le state "cart" (cart sera dans le tableau de dependance)
+    // Quand le tableau cart change il est automatiquement sauvegardé en LS
+    
+    // Faire en sorte que lorsque l'on clique sur ajout au panier on ajoute bien le produit 
+    // à notre tableau qui correspond au panier (ex : addToCart())
+
 
     // On veut afficher les produits depuis FSA lors du chargement initial seulement 
     useEffect(() => {
@@ -28,11 +45,31 @@ function Shop() {
         .catch(err => console.log(err))
     }, [])
 
-    // Autre useEffect qui viendra écouter le state "cart" (cart sera dans le tableau de dependance)
-    // Quand le tableau cart change il est automatiquement sauvegardé en LS
+    // Lorsque le state de cart est modifié on enregistre le tableau en LS 
+    useEffect(() => (
+       window.localStorage.setItem("cart", JSON.stringify(cart)) 
+    ), [cart]) 
 
-    // Faire en sorte que lorsque l'on clique sur ajout au panier on ajoute bien le produit 
-    // à notre tableau qui correspond au panier (ex : addToCart())
+    // Fonction d'ajout au panier -> on vérifie si le produit à ajouter est déjà ou pas dans le panier 
+    // Si oui on ajoute +1 à la quantité (qty) sinon on ajoute simplement le produit
+
+    function addToCart(product) {    
+        // On vient vérifier si le produit n'est pas dans le tableau sio c'est le cas on return true
+        let boolArray = cart.map(item => {
+            return (item.id === product.id) ? true : false
+        })
+
+        // On modifie le state du cart selon si le produit est déjà, ou pas, dans le panier
+        setCart((prev) => {
+                if (boolArray.includes(true)) {
+                    return prev.map(item => (item.id === product.id) ? { ... item, qty: item.qty + 1 } : item )
+                } else {
+                    return [ ... prev, { ... product, qty : 1 }]
+                }   
+            }
+        )
+    }
+
 
     return ( 
     <>
@@ -46,7 +83,7 @@ function Shop() {
                     <h2>{product.title}</h2>
                     <h3>{product.price} $</h3>
 
-                    <button>Ajouter au panier</button>
+                    <button onClick={() => addToCart(product)}>Ajouter au panier</button>
                 </div>
             ))}
         
