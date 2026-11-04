@@ -5,6 +5,7 @@ import Home from './Home'
 import Random from './Random'
 import Form from './Form'
 import Shop from './Shop'
+import Header from './Header'
 
 import cartLogo from "./assets/cart.svg"
 
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <>
+      {/* <Header /> */}
       <BrowserRouter>
         {/* Navigation */}
         <nav>

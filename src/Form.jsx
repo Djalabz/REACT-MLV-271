@@ -5,6 +5,19 @@ import Button from '@mui/material/Button';
 
 import "./Form.css"
 
+// Faire fonctionner le form : signup 
+
+// Rappel : Form de React ---> Back Node-Express ----> En BDD avec SQL (déjà fait coté back)
+// On veut que lorsque l'on clique sur le bouton de soumission l'email et le mdp soient envoyés 
+// vers notre API express.
+
+// Pour ça on devra faire une requete HTTP avec un body qui contiendra les infos 
+
+// Etapes :
+// Créer un state qui sera modifié lorsque le bouton de soumission est cliqué et contient email et mdp (ex : formData)
+// Ensuite vous pouvez créer un useEffect qui viendra se déclencher lorsque le state crée change et enverra les données coté back
+// On viendra console.log la réponse du back
+
 function Form() {
     const [inputValue, setInputValue] = useState({
         email: "",

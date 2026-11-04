@@ -38,7 +38,7 @@ function Shop() {
 
     return ( 
     <>
-        <h1>Mon eShop en React</h1>
+        <h1 className="text-xl text-grey-600">Mon eShop en React</h1>
 
         <section className="eshop-grid">
 
