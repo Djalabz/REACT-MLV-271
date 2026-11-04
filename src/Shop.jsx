@@ -7,7 +7,6 @@ import { ShopContext } from "./context/ShopContext"
 import { useContext } from "react"
 
 
-
 function Shop() {
     let { products, setProducts, cart, addToCart } = useContext(ShopContext)
 
@@ -30,7 +29,6 @@ function Shop() {
     ), [cart]) 
 
 
-
     return ( 
     <>
         <h1 className="text-xl text-grey-600">Mon eShop en React</h1>
@@ -39,6 +37,7 @@ function Shop() {
 
             {products.length && products.map((product) => (
                 <div className="product" key={product.id} >
+
                     <div onClick={() => navigate("/product/" + product.id)} className="clickable">
                         <img src={product.image} alt={product.title} />
                         <h2>{product.title}</h2>
