@@ -5,6 +5,7 @@ import Home from './Home'
 import Random from './Random'
 import Form from './Form'
 import Shop from './Shop'
+import Product from './Product'
 
 import cartLogo from "./assets/cart.svg"
 
@@ -42,6 +43,9 @@ function App() {
           <Route path="/random" element={<Random />} />
           <Route path="/form" element={<Form />} />
           <Route path="/shop" element={<Shop />} />
+
+          {/* Route dynamique pour la page individuelle d'un produit */}
+          <Route path="/product/:id" element={<Product />} />
         </Routes>
       </BrowserRouter>
     </>
