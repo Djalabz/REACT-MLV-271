@@ -32,8 +32,6 @@ function Form() {
     const [error, setError] = useState("")
     const [formData, setFormData] = useState("")
 
-    console.log(formData)
-
     // useEffect pour faire la requete lorsque formData change de valeur
     useEffect(() => {
         fetch("http://www.localhost:3000/user/signup", {

@@ -5,7 +5,6 @@ import Home from './Home'
 import Random from './Random'
 import Form from './Form'
 import Shop from './Shop'
-import Header from './Header'
 
 import cartLogo from "./assets/cart.svg"
 
@@ -17,7 +16,6 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 // Composant fonctionnel 
 function App() {
-
   let { cart } = useContext(ShopContext)
 
   return (
@@ -33,7 +31,7 @@ function App() {
           <Link to="/list">List</Link>|{" "}
           <Link to="/shop">Shop</Link>
           <img src={cartLogo} style={{ width: "30px", marginLeft: "1rem" }} />
-          <p>{cart.length}</p>
+          <p>{cart ? cart.length : 0}</p>
         </nav>
 
         {/* Routes */}
