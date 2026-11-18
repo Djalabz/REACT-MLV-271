@@ -1,24 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useContext } from 'react';
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
+import { AuthContext } from './context/AuthContext';
+
+
 import "./Form.css"
 
 // Adapter la dernière étape du fetch -> redirection vers login si signup / redirection vers accueil + enregistrement du JWT en LS si login 
 
 function Form() {
-    const [view, setView] = useState("login")
-    const [inputValue, setInputValue] = useState({
-        email: "",
-        username: "",
-        password: "",
-        confirm: ""
-    })
-    const [error, setError] = useState("")
-    const [formData, setFormData] = useState("")
+    let { 
+        view,  
+        inputValue, 
+        error, 
+        formData,  
+        handleChange, 
+        handleChangeToggle } = useContext(AuthContext)
 
     // useEffect pour faire la requete lorsque formData change de valeur
     useEffect(() => {
@@ -44,58 +45,6 @@ function Form() {
         .catch(err => console.log(err))        
     }, [formData])
 
-    function checkFormData() {
-        if (view === "signup") {
-
-                // Je vérifie que : aucun champ ne soit vide, email au bon format et le mdp doit correspondre avec le mdp de confirmation
-                if (inputValue.email != "" && inputValue.username != "" && inputValue.password != "" && inputValue.confirm != "") {
-                    
-                    // Verif de l'email 
-                    let emailRegex = /(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/
-                    let emailCheck = emailRegex.test(inputValue.email)
-
-                    if (!emailCheck) {
-                        setError("L'email n'est pas au bon format")
-                        return
-                    }
-
-                    // Verif des mdp 
-                    if (inputValue.password != inputValue.confirm) {
-                        setError("Les mots de passe doivent etre identiques")
-                        return
-                    }
-
-                    // Une fois les checks terminés je peux ajouter les infos du signup à mon state formData
-                    setFormData({ 
-                        email : inputValue.email, 
-                        username : inputValue.username, 
-                        password: inputValue.password
-                    })
-
-                } else {
-                    setError("Veuillez remplir tous les champs")
-                    return
-                }
-
-        } else {
-
-            if (inputValue.username != "" && inputValue.password != "") {
-                setFormData({ 
-                    username : inputValue.username, 
-                    password: inputValue.password
-                })
-            }
-        }
-    }
-
-    function handleChange(e, param) {
-        // let objCopy = { ... inputValue }
-        setInputValue({ ... inputValue, [param] : e.target.value })
-    } 
-
-    const handleChangeToggle = (event, newAlignment) => {
-        setView(newAlignment);
-    };
 
     return ( 
         <>   
