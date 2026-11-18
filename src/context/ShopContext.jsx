@@ -9,7 +9,6 @@ export const ShopContextProvider = ({ children }) => {
     const [products, setProducts] = useState([])
     const [cart, setCart] = useState([]) 
 
-    console.log(window.localStorage.getItem("cart"))
 
     // Fonction d'ajout au panier -> on vérifie si le produit à ajouter est déjà ou pas dans le panier 
     // Si oui on ajoute +1 à la quantité (qty) sinon on ajoute simplement le produit

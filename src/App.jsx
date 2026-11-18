@@ -32,6 +32,10 @@ import { BrowserRouter, Routes, Route, Link } from 'react-router-dom'
 
 // Page produit : proposer un "rating" + commentaires pour chaque produit
 
+// Faire en sorte que lors de l'arrivée sur le site on vérifie la présence du token 
+// -> Si pas de token on affiche pas les liens du menu et on ne peut que voir la page de form 
+// -> Si token on renvoie vers le shop ou page d'accueil 
+
 
 function App() {
   let { cart } = useContext(ShopContext)
@@ -66,8 +70,6 @@ function App() {
             </Toolbar>
           </AppBar>
         </Box>
-
-
 
         {/* Routes */}
         <Routes>

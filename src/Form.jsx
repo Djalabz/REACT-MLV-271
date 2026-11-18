@@ -1,5 +1,6 @@
 import { useEffect, useContext } from 'react';
 import { useNavigate, redirect } from 'react-router-dom';
+import { useJwt } from "react-jwt"
 
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -21,10 +22,11 @@ function Form() {
         formData,  
         handleChange, 
         handleChangeToggle,
-        checkFormData } = useContext(AuthContext)
+        checkFormData, token, setToken, user, setUser   } = useContext(AuthContext)
 
 
-        let navigate = useNavigate()
+    let navigate = useNavigate()
+
 
     // useEffect pour faire la requete lorsque formData change de valeur
     useEffect(() => {
@@ -41,13 +43,14 @@ function Form() {
         }})
         .then(data => data.json())
         .then(result => {
-            console.log(result)
             if (view === "signup") {
                 navigate("/form")
             } else {
                 localStorage.setItem("token", result) 
+                setToken(result)
+
                 navigate("/shop")
-            }}   // Cas ou on a rempli le login -> on récupère le token, on l'enregistre en LS et on redirige vers la page d'accueil 
+            }}   
         )
         .catch(err => console.log(err))        
     }, [formData])
@@ -61,10 +64,11 @@ function Form() {
             value={view}
             exclusive
             onChange={handleChangeToggle}
-            aria-label="Platform"
-        >
+            aria-label="Platform">
+
             <ToggleButton value="login">Login</ToggleButton>
             <ToggleButton value="signup">Signup</ToggleButton>
+
         </ToggleButtonGroup>           
 
             { (view === "signup") ? 

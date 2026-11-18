@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom"
 import "./Shop.css"
 
 import { ShopContext } from "./context/ShopContext"
+import { AuthContext } from "./context/AuthContext"
 import { useContext } from "react"
+import { useJwt } from "react-jwt"
 
 
 function Shop() {
     let { products, setProducts, cart, addToCart } = useContext(ShopContext)
+    let { token, setUser } = useContext(AuthContext)
 
     let navigate = useNavigate()
 
@@ -17,7 +20,6 @@ function Shop() {
         fetch('https://fakestoreapi.com/products')
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             setProducts(data)
         })
         .catch(err => console.log(err))

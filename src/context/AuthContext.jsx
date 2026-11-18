@@ -1,7 +1,9 @@
 // Regouper ici l'ensemble des states et des opérations liées au User et à son authentification 
 
 // 1 - On fait nos imports (useState, useContext etc )
-import { useState, createContext } from "react"
+import { useState, useEffect, createContext } from "react"
+import { useNavigate } from "react-router-dom"
+import { useJwt } from "react-jwt"
 
 // 2 - On vient créer le contexte (AuthContext)
 export const AuthContext = createContext()
@@ -17,15 +19,21 @@ export const AuthContextProvider = ({ children }) => {
     })
     const [error, setError] = useState("")
     const [formData, setFormData] = useState("")
-
-    // Après avoir modifié la dernière étape du fetch dans le Form (selon si signup ou login) on devra :
-
-    // Ajouter un state qui correspond au token et pourquoi pas un state qui correspond aux infos du user 
-
-    // Vérification du token -> On pourra coder un useEffect qui prend pour valeur de départ le token présent dans le LS 
-    // On vient vérifier son contenu (on le déchiffre avec JWT decode) et on l'ajoute à un state User par exemple
+    const [token, setToken] = useState(() => localStorage.getItem("token"))
+    const [user, setUser] = useState("")
 
     // Si on a bien un token de présent on peut déclarer une variable isAuthenticated = true
+
+    useEffect(() => {
+        if (token) {
+            try {
+                // Ici on va décoder le token et ajouter son contenu en clair dans un state qui pourra etre user / userInfos
+                const { decodedToken } = useJwt(token)
+                console.log(decodedToken)
+                setUser(decodedToken)
+            } catch(err) {console.log(err)}
+        }
+    }, [token])
 
     
     function checkFormData() {
@@ -81,12 +89,22 @@ export const AuthContextProvider = ({ children }) => {
         setView(newAlignment);
     }
 
+    function logout() {
+        localStorage.removeItem("token")
+        setToken("")
+        setUser("")
+
+        let navigate = useNavigate()
+        navigate("/form")
+    }
+
     let values = {
         view, setView, 
         inputValue, setInputValue,
         error, setError, 
         formData, setFormData, 
-        checkFormData, handleChange, handleChangeToggle
+        checkFormData, handleChange, handleChangeToggle,
+        logout, token, setToken, user, setUser 
     }
 
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
