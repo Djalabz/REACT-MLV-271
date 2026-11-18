@@ -2,7 +2,7 @@ h1 {
     text-align: center;
 }
 
-.signup
+.signup, .login
 {
     width: 50vw;
     margin: 2rem auto;
