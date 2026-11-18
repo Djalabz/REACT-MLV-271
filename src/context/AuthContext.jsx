@@ -18,6 +18,15 @@ export const AuthContextProvider = ({ children }) => {
     const [error, setError] = useState("")
     const [formData, setFormData] = useState("")
 
+    // Après avoir modifié la dernière étape du fetch dans le Form (selon si signup ou login) on devra :
+
+    // Ajouter un state qui correspond au token et pourquoi pas un state qui correspond aux infos du user 
+
+    // Vérification du token -> On pourra coder un useEffect qui prend pour valeur de départ le token présent dans le LS 
+    // On vient vérifier son contenu (on le déchiffre avec JWT decode) et on l'ajoute à un state User par exemple
+
+    // Si on a bien un token de présent on peut déclarer une variable isAuthenticated = true
+
     
     function checkFormData() {
         if (view === "signup") {
