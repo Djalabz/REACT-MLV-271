@@ -1,0 +1,1 @@
+// Ce composant nous permettra de vérifier la présence du token et autoriser l'accès à certaines routes ou non

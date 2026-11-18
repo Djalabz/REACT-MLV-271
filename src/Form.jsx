@@ -7,10 +7,7 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 import "./Form.css"
 
-// Ajouter un formulaire de Login 
-
-// On veut un bouton de type switch qui pourra changer la vue selon si on veut se login ou signup
-
+// Adapter la dernière étape du fetch -> redirection vers login si signup / redirection vers accueil + enregistrement du JWT en LS si login 
 
 function Form() {
     const [view, setView] = useState("login")
@@ -37,7 +34,13 @@ function Form() {
                 "Content-Type": "application/json"
         }})
         .then(data => data.json())
-        .then(result => console.log(result))
+        .then(result => {
+            console.log(result)}
+            // Cas ou on a rempli le signup -> on est redirigé vers le login
+
+            // Cas ou on a rempli le login -> on récupère le token, on l'enregistre en LS et on redirige vers la page d'accueil 
+
+        )
         .catch(err => console.log(err))        
     }, [formData])
 
